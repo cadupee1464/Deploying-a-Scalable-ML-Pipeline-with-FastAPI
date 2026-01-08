@@ -52,7 +52,7 @@ X_test, y_test, _, _ = process_data(
 )
 
 # TODO: use the train_model function to train the model on the training dataset
-model = None # your code here
+model = train_model(X_train, y_train) # your code here
 
 # save the model and the encoder
 model_path = os.path.join(project_path, "model", "model.pkl")
@@ -66,7 +66,7 @@ model = load_model(
 ) 
 
 # TODO: use the inference function to run the model inferences on the test dataset.
-preds = None # your code here
+preds = inference(model, X_test) # your code here
 
 # Calculate and print the metrics
 p, r, fb = compute_model_metrics(y_test, preds)
