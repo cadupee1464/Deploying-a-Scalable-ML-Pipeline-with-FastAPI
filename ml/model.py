@@ -115,7 +115,7 @@ def performance_on_categorical_slice(
         Trained sklearn OneHotEncoder, only used if training=False.
     lb : sklearn.preprocessing._label.LabelBinarizer
         Trained sklearn LabelBinarizer, only used if training=False.
-    model : ???
+    model : object
         Model used for the task.
 
     Returns
@@ -126,11 +126,17 @@ def performance_on_categorical_slice(
 
     """
     # TODO: implement the function
+    sliced_data = data[data[column_name] == slice_value]
     X_slice, y_slice, _, _ = process_data(
         # your code here
         # for input data, use data in column given as "column_name", with the slice_value 
         # use training = False
+        sliced_data,
+        categorical_features = categorical_features,
+        label=label,
+        training = False
+        
     )
-    preds = None # your code here to get prediction on X_slice using the inference function
+    preds = model.predict(X_slice) # your code here to get prediction on X_slice using the inference function
     precision, recall, fbeta = compute_model_metrics(y_slice, preds)
     return precision, recall, fbeta
