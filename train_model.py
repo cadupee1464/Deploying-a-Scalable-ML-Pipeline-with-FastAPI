@@ -48,6 +48,7 @@ X_test, y_test, _, _ = process_data(
     label="salary",
     training=False,
     encoder=encoder,
+    s
     lb=lb,
 )
 
